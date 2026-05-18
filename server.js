@@ -16,7 +16,7 @@ const refillRoutes = require('./routes/refillRoutes');
 const app = express();
 
 app.use(cors({
-  origin: 'https://pharmacy-frontend.vercel.app',
+  origin: 'https://pharmacy-frontend-snowy.vercel.app/',
   credentials: true,
 }));
 app.use(express.json());
