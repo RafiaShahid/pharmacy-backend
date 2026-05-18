@@ -8,7 +8,8 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  synchronize: true,   // ← THIS auto creates tables!
+  ssl: { rejectUnauthorized: false },
+  synchronize: true,
   logging: false,
   entities: [
     require('../entities/User'),
@@ -22,7 +23,6 @@ const AppDataSource = new DataSource({
   ],
 });
 
-// Keep pool for existing controllers (raw SQL still works)
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -31,6 +31,7 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  ssl: { rejectUnauthorized: false },
 });
 
 module.exports = { AppDataSource, pool };
